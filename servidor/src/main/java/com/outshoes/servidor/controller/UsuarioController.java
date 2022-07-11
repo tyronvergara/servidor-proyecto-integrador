@@ -38,8 +38,8 @@ public class UsuarioController {
 	 }
 		
 	 @PostMapping(path="agregar")
-	 public String addNewUser (@RequestBody Usuario usuario) { 
-		 return usuarioService.addNewUser(usuario); 
+	 public String addUser (@RequestBody Usuario usuario) { 
+		 return usuarioService.addUser(usuario); 
 	 }
 	 
 	 @DeleteMapping(path="{Id}")

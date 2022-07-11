@@ -24,7 +24,7 @@ public class UsuarioService {
 	}
 	
 	
-	public String addNewUser (Usuario usuario) { 
+	public String addUser (Usuario usuario) { 
 		
 		Usuario n = new Usuario();
 		
