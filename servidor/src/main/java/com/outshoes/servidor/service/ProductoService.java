@@ -46,9 +46,10 @@ public class ProductoService {
 	    	  producto.setDescripcion(newProducto.getDescripcion());
 	    	  producto.setImagen(newProducto.getImagen());
 	    	  producto.setPrecio(newProducto.getPrecio());
-	    	  producto.setCategoria_id(newProducto.getCategoria_id());
-	    	  producto.setColeccion_id(newProducto.getColeccion_id());
-	    	  producto.setMarca_id(newProducto.getMarca_id());
+	    	  producto.setCategoria(newProducto.getCategoria());
+	    	  producto.setColeccion(newProducto.getColeccion());
+	    	  producto.setMarca(newProducto.getMarca());
+	    	  //producto.setMarca_id(newProducto.getMarca_id());
 	    	  return productoRepository.save(producto);
 	      })
 	      .orElseGet(() -> {

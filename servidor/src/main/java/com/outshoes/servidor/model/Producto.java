@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Producto {
@@ -19,9 +21,24 @@ public class Producto {
 	private String imagen;
 	@Column(name="precio", columnDefinition="Decimal(6,2)")
 	private double precio;
-	private int Categoria_id;
-	private int Coleccion_id;
-	private int Marca_id;
+//	private int Categoria_id;
+//	private int Coleccion_id;
+//	private int Marca_id;
+	
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Categoria_id", nullable = false,
+        referencedColumnName = "id")
+    private Categoria categoria;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Coleccion_id", nullable = false,
+        referencedColumnName = "id")
+    private Coleccion coleccion;
+	
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Marca_id", nullable = false,
+        referencedColumnName = "id")
+    private Marca marca;
 	
 	public Long getId() {
 		return id;
@@ -59,24 +76,28 @@ public class Producto {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-	public int getCategoria_id() {
-		return Categoria_id;
+	public Marca getMarca() {
+		return marca;
 	}
-	public void setCategoria_id(int categoria_id) {
-		Categoria_id = categoria_id;
+	public void setMarca(Marca marca) {
+		this.marca = marca;
 	}
-	public int getColeccion_id() {
-		return Coleccion_id;
+	public Categoria getCategoria() {
+		return categoria;
 	}
-	public void setColeccion_id(int coleccion_id) {
-		Coleccion_id = coleccion_id;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
-	public int getMarca_id() {
-		return Marca_id;
+	public Coleccion getColeccion() {
+		return coleccion;
 	}
-	public void setMarca_id(int marca_id) {
-		Marca_id = marca_id;
+	public void setColeccion(Coleccion coleccion) {
+		this.coleccion = coleccion;
 	}
 	
+	/*
+	 * public int getMarca_id() { return Marca_id; } public void setMarca_id(int
+	 * marca_id) { Marca_id = marca_id; }
+	 */
 	
 }
