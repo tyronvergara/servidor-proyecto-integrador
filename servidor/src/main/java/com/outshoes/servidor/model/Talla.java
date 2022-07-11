@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
 
 public class Talla {
@@ -17,6 +18,25 @@ public class Talla {
 	private Long id;
 	private String numero;
 	
+	/*
+	 * @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	 * 
+	 * @JoinTable(name = "Inventario", joinColumns = @JoinColumn(name = "id",
+	 * referencedColumnName = "Talla_id"), inverseJoinColumns = @JoinColumn(name =
+	 * "id", referencedColumnName = "Producto_id"))
+	 */
+	/*
+	 * @JoinTable( name = "Inventario", joinColumns = @JoinColumn(name =
+	 * "Producto_id", nullable = false), inverseJoinColumns
+	 * = @JoinColumn(name="Talla_id", nullable = false) )
+	 * 
+	 * @ManyToMany(cascade = CascadeType.ALL) private List<Existencia> existencia;
+	 */
+	
+	/*
+	 * public List<Existencia> getExistencia() { return existencia; } public void
+	 * setExistencia(List<Existencia> existencia) { this.existencia = existencia; }
+	 */
 	public Long getId() {
 		return id;
 	}

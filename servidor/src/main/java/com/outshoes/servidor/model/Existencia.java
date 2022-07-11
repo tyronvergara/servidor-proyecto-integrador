@@ -17,6 +17,10 @@ public class Existencia {
 	private Long Inventario_id;
 	private Long cantidad;
 	
+	/*
+	 * @ManyToMany(mappedBy = "Existencia") private List<Talla> talla;
+	 */
+	
 	public Long getId() {
 		return id;
 	}
