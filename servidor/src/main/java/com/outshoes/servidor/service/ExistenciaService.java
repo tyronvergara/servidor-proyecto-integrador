@@ -29,7 +29,8 @@ public class ExistenciaService {
 		
 		Existencia n = new Existencia();
 		
-		n.setInventario_id(existencia.getInventario_id());
+		//n.setInventario_id(existencia.getInventario_id());
+		n.setInventario(existencia.getInventario());
 		n.setCantidad(existencia.getCantidad());
 	  
 		existenciaRepository.save(n); 
@@ -48,7 +49,8 @@ public class ExistenciaService {
 	public String updStock(Long id, Existencia newExistencia) {
 	    existenciaRepository.findById(id)
 	    	      .map(existencia -> {
-	    	    	  existencia.setInventario_id(newExistencia.getInventario_id());
+	    	    	  //existencia.setInventario_id(newExistencia.getInventario_id());
+	    	    	  existencia.setInventario(newExistencia.getInventario());
 	    	    	  existencia.setCantidad(newExistencia.getCantidad());
 	    	    	  return existenciaRepository.save(existencia);
 	    	      })

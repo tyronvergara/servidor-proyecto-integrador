@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Usuario {
@@ -23,7 +25,12 @@ public class Usuario {
 	private String estado;
 	private String ciudad;
 	private String cp;
-	private Integer Tipo_id;
+	
+	@OneToOne(optional = false)
+    @JoinColumn(name = "Tipo_id", nullable = false,
+        referencedColumnName = "id")
+	
+    private Tipo tipo;
 	
 	public Long getId() {
 		return id;
@@ -91,11 +98,11 @@ public class Usuario {
 	public void setCp(String cp) {
 		this.cp = cp;
 	}
-	public Integer getTipo_id() {
-		return Tipo_id;
+	public Tipo getTipo() {
+		return tipo;
 	}
-	public void setTipo_id(Integer tipo_id) {
-		Tipo_id = tipo_id;
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
 	}
 	
 }

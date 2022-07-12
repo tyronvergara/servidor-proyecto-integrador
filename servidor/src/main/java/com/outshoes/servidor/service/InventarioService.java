@@ -28,8 +28,11 @@ public class InventarioService {
 		
 		Inventario n = new Inventario();
 		
-		n.setProducto_id(inventario.getProducto_id());
-		n.setTalla_id(inventario.getTalla_id());
+		//n.setProducto_id(inventario.getProducto_id());
+		n.setProducto(inventario.getProducto());;
+		//n.setTalla_id(inventario.getTalla_id());
+		n.setTalla(inventario.getTalla());
+		n.setCantidad(inventario.getCantidad());
 	  
 		inventarioRepository.save(n); 
 		return "Inventario agregado"; 
@@ -47,8 +50,11 @@ public class InventarioService {
 	public String updInventory(Long id, Inventario newInventario) {
 	    inventarioRepository.findById(id)
 	    	      .map(inventario -> {
-	    	    	  inventario.setProducto_id(newInventario.getProducto_id());
-	    	    	  inventario.setTalla_id(newInventario.getTalla_id());
+	    	    	  //inventario.setProducto_id(newInventario.getProducto_id());
+	    	    	  inventario.setProducto(newInventario.getProducto());
+	    	    	  //inventario.setTalla_id(newInventario.getTalla_id());
+	    	    	  inventario.setTalla(newInventario.getTalla());
+	    	    	  inventario.setCantidad(newInventario.getCantidad());
 	    	    	  return inventarioRepository.save(inventario);
 	    	      })
 	    	      .orElseGet(() -> {

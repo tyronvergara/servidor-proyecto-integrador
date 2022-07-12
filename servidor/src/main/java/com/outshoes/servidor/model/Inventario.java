@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Inventario {
@@ -14,8 +16,17 @@ public class Inventario {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id", unique = true, nullable = false)
 	private Long id;
-	private Long Producto_id;
-	private Long Talla_id;
+	private Long cantidad;
+	
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Producto_id", nullable = false,
+        referencedColumnName = "id")
+    private Producto producto;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Talla_id", nullable = false,
+        referencedColumnName = "id")
+    private Talla talla;
 	
 	public Long getId() {
 		return id;
@@ -23,17 +34,23 @@ public class Inventario {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Long getProducto_id() {
-		return Producto_id;
+	public Producto getProducto() {
+		return producto;
 	}
-	public void setProducto_id(Long producto_id) {
-		Producto_id = producto_id;
+	public void setProducto(Producto producto) {
+		this.producto = producto;
 	}
-	public Long getTalla_id() {
-		return Talla_id;
+	public Talla getTalla() {
+		return talla;
 	}
-	public void setTalla_id(Long talla_id) {
-		Talla_id = talla_id;
+	public void setTalla(Talla talla) {
+		this.talla = talla;
 	}
-	
+	public Long getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(Long cantidad) {
+		this.cantidad = cantidad;
+	}
+
 }

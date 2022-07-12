@@ -33,7 +33,8 @@ public class UsuarioService {
 		n.setNombre(usuario.getNombre());
 		n.setApellidop(usuario.getApellidop());
 		n.setApellidom(usuario.getApellidom());
-		n.setTipo_id(usuario.getTipo_id());
+		n.setTipo(usuario.getTipo());
+		//n.setTipo_id(usuario.getTipo_id());
 	  
 		usuarioRepository.save(n); 
 		return "Usuario agregado"; 
@@ -61,7 +62,8 @@ public class UsuarioService {
 	    	    	  usuario.setEstado(newUsuario.getEstado());
 	    	    	  usuario.setCiudad(newUsuario.getCiudad());
 	    	    	  usuario.setCp(newUsuario.getCp());
-	    	    	  usuario.setTipo_id(newUsuario.getTipo_id());
+	    	    	  //usuario.setTipo_id(newUsuario.getTipo_id());
+	    	    	  usuario.setTipo(newUsuario.getTipo());
 	    	    	  return usuarioRepository.save(usuario);
 	    	      })
 	    	      .orElseGet(() -> {

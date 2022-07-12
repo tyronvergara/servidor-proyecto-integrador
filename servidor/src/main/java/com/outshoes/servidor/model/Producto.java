@@ -19,11 +19,9 @@ public class Producto {
 	private String nombre;
 	private String descripcion;
 	private String imagen;
+	
 	@Column(name="precio", columnDefinition="Decimal(6,2)")
 	private double precio;
-//	private int Categoria_id;
-//	private int Coleccion_id;
-//	private int Marca_id;
 	
     @ManyToOne(optional = false)
     @JoinColumn(name = "Categoria_id", nullable = false,
@@ -94,10 +92,5 @@ public class Producto {
 	public void setColeccion(Coleccion coleccion) {
 		this.coleccion = coleccion;
 	}
-	
-	/*
-	 * public int getMarca_id() { return Marca_id; } public void setMarca_id(int
-	 * marca_id) { Marca_id = marca_id; }
-	 */
 	
 }
