@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.outshoes.servidor.model.Inventario;
@@ -62,6 +64,11 @@ public class InventarioService {
 	    	      });
 	    
 	    return "Inventario actualizado o creado";
+	}
+
+	// 
+	public ResponseEntity<List<Inventario>> getInventoryProduct(Long id) {
+		return new ResponseEntity<List<Inventario>>(inventarioRepository.findByProducto_id(id), HttpStatus.OK);
 	}
 	
 }
