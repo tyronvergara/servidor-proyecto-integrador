@@ -38,6 +38,8 @@ public class Producto {
         referencedColumnName = "id")
     private Marca marca;
 	
+	public Producto() {
+	}
 	public Long getId() {
 		return id;
 	}

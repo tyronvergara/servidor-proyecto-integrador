@@ -67,4 +67,8 @@ public class ProductoService {
 		Page<Producto> pagina = productoRepository.findAll(n);
 		return pagina.getContent();
 	}
+
+	public Long getProductoCount() {
+		return productoRepository.count();
+	}
 }

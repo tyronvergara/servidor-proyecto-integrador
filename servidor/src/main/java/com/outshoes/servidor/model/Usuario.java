@@ -32,6 +32,9 @@ public class Usuario {
 	
     private Tipo tipo;
 	
+	public Usuario() {
+		
+	}
 	public Long getId() {
 		return id;
 	}

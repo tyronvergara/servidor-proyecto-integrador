@@ -8,6 +8,6 @@ import com.outshoes.servidor.model.Producto;
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Long>{
 	
-
+	
 	
 }

@@ -24,52 +24,60 @@ public class UsuarioService {
 	}
 	
 	
-	public String addUser (Usuario usuario) { 
+	public Usuario addUser (Usuario usuario) { 
+		Usuario tmpUsuario = null;
 		
-		Usuario n = new Usuario();
-		
-		n.setCorreo(usuario.getCorreo());
-		n.setContrasena(usuario.getContrasena());
-		n.setNombre(usuario.getNombre());
-		n.setApellidop(usuario.getApellidop());
-		n.setApellidom(usuario.getApellidom());
-		n.setTipo(usuario.getTipo());
-		//n.setTipo_id(usuario.getTipo_id());
-	  
-		usuarioRepository.save(n); 
-		return "Usuario agregado"; 
+		Optional <Usuario> userByCorreo = usuarioRepository.findByCorreo(usuario.getCorreo());
+			
+			if (userByCorreo.isPresent()) {
+				throw new IllegalStateException("El usuario ya existe");
+			} else {
+				usuarioRepository.save(usuario);
+			}
+
+			return tmpUsuario;
 	 }
 
 	public Optional <Usuario> getUser(Long id) {
 		return usuarioRepository.findById(id);
 	}
 
-	public String delUser(Long id) {
-		usuarioRepository.deleteById(id);
-		return "Usuario borrado";
+	public Usuario delUser(Long id) {
+		Usuario tmpUsuario = null;
+		
+		if(usuarioRepository.existsById(id)) {
+			tmpUsuario = usuarioRepository.findById(id).get();
+			usuarioRepository.deleteById(id);
+		}
+		
+		return tmpUsuario;
 	}
 
-	public String updUser(Long id, Usuario newUsuario) {
-	    usuarioRepository.findById(id)
-	    	      .map(usuario -> {
-	    	    	  usuario.setCorreo(newUsuario.getCorreo());
-	    	    	  usuario.setContrasena(newUsuario.getContrasena());
-	    	    	  usuario.setNombre(newUsuario.getNombre());
-	    	    	  usuario.setApellidop(newUsuario.getApellidop());
-	    	    	  usuario.setApellidom(newUsuario.getApellidom());
-	    	    	  usuario.setDireccionuno(newUsuario.getDireccionuno());
-	    	    	  usuario.setDirecciondos(newUsuario.getDirecciondos());
-	    	    	  usuario.setEstado(newUsuario.getEstado());
-	    	    	  usuario.setCiudad(newUsuario.getCiudad());
-	    	    	  usuario.setCp(newUsuario.getCp());
-	    	    	  //usuario.setTipo_id(newUsuario.getTipo_id());
-	    	    	  usuario.setTipo(newUsuario.getTipo());
-	    	    	  return usuarioRepository.save(usuario);
-	    	      })
-	    	      .orElseGet(() -> {
-	    	        return usuarioRepository.save(newUsuario);
-	    	      });
-	    
-	    return "Usuario actualizado o creado";
+	public Usuario updUser(Long id, String password, String newPassword) {
+		Usuario tmpUsuario = null;
+		
+		if(usuarioRepository.existsById(id)) {
+			tmpUsuario = usuarioRepository.findById(id).get();
+			if(tmpUsuario.getContrasena().equals(password)) {
+				tmpUsuario.setContrasena(newPassword);
+				usuarioRepository.save(tmpUsuario);
+			}
+		}
+		
+		return tmpUsuario;
+	}
+
+	public boolean validateUsuario(Usuario usuario) {
+		boolean res = false;
+		
+			Optional <Usuario> userByCorreo = usuarioRepository.findByCorreo(usuario.getCorreo());
+		
+			if (userByCorreo.isPresent()) {
+				Usuario u = userByCorreo.get();
+				if(u.getContrasena().equals(usuario.getContrasena())) {
+					res = true;
+				}
+			}
+		return res;
 	}
 }

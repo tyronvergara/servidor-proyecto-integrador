@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.outshoes.servidor.model.CambiarContrasena;
 import com.outshoes.servidor.model.Usuario;
 import com.outshoes.servidor.service.UsuarioService;
 
@@ -40,17 +41,17 @@ public class UsuarioController {
 	 }
 		
 	 @PostMapping(path="agregar")
-	 public String addUser (@RequestBody Usuario usuario) { 
+	 public Usuario addUser (@RequestBody Usuario usuario) { 
 		 return usuarioService.addUser(usuario); 
 	 }
 	 
 	 @DeleteMapping(path="{Id}")
-	 public String deleteUser (@PathVariable("Id") Long id) {
+	 public Usuario deleteUser (@PathVariable("Id") Long id) {
 		 return usuarioService.delUser(id);
 	 }
 	 
 	 @PutMapping(path="{Id}")
-	 public String updateUser (@PathVariable("Id") Long id, @RequestBody Usuario newUsuario) {
-		 return usuarioService.updUser(id, newUsuario);
+	 public Usuario updateUser (@PathVariable("Id") Long id, @RequestBody CambiarContrasena cambiarContrasena) {
+		return usuarioService.updUser(id, cambiarContrasena.getContrasena(), cambiarContrasena.getNuevaContrasena()); 
 	 }
 }
