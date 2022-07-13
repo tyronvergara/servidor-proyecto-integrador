@@ -16,11 +16,11 @@ public class ServidorApplication {
 
 	@Bean
 	public FilterRegistrationBean<JwtFilter> jwtFilter() {
-		FilterRegistrationBean<JwtFilter> registrationBean = new FilterRegistrationBean<JwtFilter>();
-		registrationBean.setFilter(new JwtFilter());
-		//registrationBean.addUrlPatterns("/api/producto/*");
-		registrationBean.addUrlPatterns("/api/usuario/*");
-		return registrationBean;
+	FilterRegistrationBean<JwtFilter> registrationBean = new FilterRegistrationBean<JwtFilter>();
+	registrationBean.setFilter(new JwtFilter());
+	registrationBean.addUrlPatterns("/api/usuario/*");
+	registrationBean.addUrlPatterns("/api/producto/*");
+	return registrationBean;
 	}
 	
 }
