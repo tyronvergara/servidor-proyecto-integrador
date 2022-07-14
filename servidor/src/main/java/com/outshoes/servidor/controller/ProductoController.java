@@ -46,16 +46,16 @@ public class ProductoController {
 	}
 	
 	@PostMapping(path="agregar")
-	public String addProduct (@RequestBody Producto producto) {
+	public Producto addProduct (@RequestBody Producto producto) {
 		return productoService.addProduct(producto);
 	}
 	
-	@DeleteMapping(path="{Id}")
-	public String deleteProduct (@PathVariable("Id") Long id) {
+	@DeleteMapping(path="borrar/{Id}")
+	public Optional<Producto> deleteProduct (@PathVariable("Id") Long id) {
 		return productoService.delProduct(id);
 	}
 	
-	@PutMapping(path="{Id}")
+	@PutMapping(path="actualizar/{Id}")
 	public String updateProduct (@PathVariable("Id") Long id, @RequestBody Producto newProducto) {
 		return productoService.updProduct(id, newProducto);
 	}

@@ -31,14 +31,15 @@ public class ProductoService {
 		return productoRepository.findById(id);
 	}
 
-	public String addProduct(Producto producto) {
+	public Producto addProduct(Producto producto) {
 		productoRepository.save(producto);
-		return "Producto agregado";
+		return producto;
 	}
 
-	public String delProduct(Long id) {
+	public Optional<Producto> delProduct(Long id) {
+		Optional<Producto> producto = productoRepository.findById(id);
 		productoRepository.deleteById(id);
-		return "Producto eliminado";
+		return producto;
 	}
 
 	public String updProduct(Long id, Producto newProducto) {

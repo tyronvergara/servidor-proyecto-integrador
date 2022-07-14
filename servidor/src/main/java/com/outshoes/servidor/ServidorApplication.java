@@ -18,8 +18,18 @@ public class ServidorApplication {
 	public FilterRegistrationBean<JwtFilter> jwtFilter() {
 	FilterRegistrationBean<JwtFilter> registrationBean = new FilterRegistrationBean<JwtFilter>();
 	registrationBean.setFilter(new JwtFilter());
-	registrationBean.addUrlPatterns("/api/usuario/*");
-	registrationBean.addUrlPatterns("/api/producto/*");
+	
+	//registrationBean.addUrlPatterns("/api/usuario/*");
+	//registrationBean.addUrlPatterns("/api/producto/*");
+	
+	registrationBean.addUrlPatterns("/api/producto/agregar/");
+	registrationBean.addUrlPatterns("/api/producto/actualizar/*");
+	registrationBean.addUrlPatterns("/api/producto/borrar");
+	
+	registrationBean.addUrlPatterns("/api/usuario/todo");
+	registrationBean.addUrlPatterns("/api/usuario/actualizar/*");
+	registrationBean.addUrlPatterns("/api/usuario/borrar");
+	
 	return registrationBean;
 	}
 	

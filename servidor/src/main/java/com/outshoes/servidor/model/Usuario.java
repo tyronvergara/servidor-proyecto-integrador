@@ -33,8 +33,13 @@ public class Usuario {
     private Tipo tipo;
 	
 	public Usuario() {
+		Tipo tipo = new Tipo();
+		tipo.setId((long) 2);
+		tipo.setNombre("Cliente");
 		
+		this.setTipo(tipo);
 	}
+	
 	public Long getId() {
 		return id;
 	}

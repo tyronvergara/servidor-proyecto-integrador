@@ -45,12 +45,12 @@ public class UsuarioController {
 		 return usuarioService.addUser(usuario); 
 	 }
 	 
-	 @DeleteMapping(path="{Id}")
+	 @DeleteMapping(path="borrar/{Id}")
 	 public Usuario deleteUser (@PathVariable("Id") Long id) {
 		 return usuarioService.delUser(id);
 	 }
 	 
-	 @PutMapping(path="{Id}")
+	 @PutMapping(path="actualizar/{Id}")
 	 public Usuario updateUser (@PathVariable("Id") Long id, @RequestBody CambiarContrasena cambiarContrasena) {
 		return usuarioService.updUser(id, cambiarContrasena.getContrasena(), cambiarContrasena.getNuevaContrasena()); 
 	 }

@@ -25,17 +25,18 @@ public class JwtFilter extends GenericFilterBean{
 			throws IOException, ServletException {
 
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-		String authHeader = httpServletRequest.getHeader("authorization");
+		String authHeader = httpServletRequest.getHeader("authorization");		
 		
 		if ( ("POST".equals(httpServletRequest.getMethod())) ||
-			 ( ("GET".equals(httpServletRequest.getMethod())) &&
-			 (! httpServletRequest.getRequestURI().contains("/api/producto/") ) ) ||
 			 ("PUT".equals(httpServletRequest.getMethod())) ||
-			 ("DELETE".equals(httpServletRequest.getMethod()))
+			 ("DELETE".equals(httpServletRequest.getMethod())) ||
+			 ( ("GET".equals(httpServletRequest.getMethod())) &&
+			(! httpServletRequest.getRequestURI().contains("/api/producto") ) )
 			) {
 			if (authHeader == null || !authHeader.startsWith("Bearer: ")) {
 				throw new ServletException("1. Invalid Token");
-			}
+			} // if authHeader
+			
 			String token = authHeader.substring(7);
 			try {
 				Claims claims = Jwts.parser().setSigningKey(secret)
@@ -47,7 +48,7 @@ public class JwtFilter extends GenericFilterBean{
 				throw new ServletException("2. Invalid Token.");
 				}//catch
 
-			chain.doFilter(httpServletRequest, response);
+			chain.doFilter(request, response);
 			
 		}
 	}
