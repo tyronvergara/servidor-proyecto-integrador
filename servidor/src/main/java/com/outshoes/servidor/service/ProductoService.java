@@ -23,6 +23,10 @@ public class ProductoService {
 		this.productoRepository = productoRepository;
 	}
 	
+	public List<Producto> getProductsDesc () {
+		return productoRepository.findAllByOrderByIdDesc();
+	}
+	
 	public List<Producto> getAllProducts () {
 		return productoRepository.findAll();
 	}

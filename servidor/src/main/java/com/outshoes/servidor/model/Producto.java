@@ -23,6 +23,9 @@ public class Producto {
 	@Column(name="precio", columnDefinition="Decimal(6,2)")
 	private double precio;
 	
+	@Column(name="talla", columnDefinition="Decimal(3,1)")
+	private double talla;
+	
     @ManyToOne(optional = false)
     @JoinColumn(name = "Categoria_id", nullable = false,
         referencedColumnName = "id")
@@ -93,6 +96,12 @@ public class Producto {
 	}
 	public void setColeccion(Coleccion coleccion) {
 		this.coleccion = coleccion;
+	}
+	public double getTalla() {
+		return talla;
+	}
+	public void setTalla(double talla) {
+		this.talla = talla;
 	}
 	
 }

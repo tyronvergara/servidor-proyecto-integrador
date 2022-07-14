@@ -44,12 +44,12 @@ public class MarcaController {
 		 return marcaService.addBrand(marca); 
 	 }
 	 
-	 @DeleteMapping(path="{Id}")
+	 @DeleteMapping(path="borrar/{Id}")
 	 public String deleteBrand (@PathVariable("Id") Long id) {
 		 return marcaService.delBrand(id);
 	 }
 	 
-	 @PutMapping(path="{Id}")
+	 @PutMapping(path="actualizar/{Id}")
 	 public String updateBrand (@PathVariable("Id") Long id, @RequestBody Marca newMarca) {
 		 return marcaService.updBrand(id, newMarca);
 	 }

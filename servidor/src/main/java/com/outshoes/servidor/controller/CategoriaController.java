@@ -44,12 +44,12 @@ public class CategoriaController {
 		 return categoriaService.addCategory(categoria); 
 	 }
 	 
-	 @DeleteMapping(path="{Id}")
+	 @DeleteMapping(path="borrar/{Id}")
 	 public String deleteCategory (@PathVariable("Id") Long id) {
 		 return categoriaService.delCategory(id);
 	 }
 	 
-	 @PutMapping(path="{Id}")
+	 @PutMapping(path="actualizar/{Id}")
 	 public String updateCategory (@PathVariable("Id") Long id, @RequestBody Categoria newCategoria) {
 		 return categoriaService.updCategory(id, newCategoria);
 	 }

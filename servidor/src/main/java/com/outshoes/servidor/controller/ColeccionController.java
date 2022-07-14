@@ -44,12 +44,12 @@ public class ColeccionController {
 		 return coleccionService.addCollection(coleccion); 
 	 }
 	 
-	 @DeleteMapping(path="{Id}")
+	 @DeleteMapping(path="borrar/{Id}")
 	 public String deleteCollection (@PathVariable("Id") Long id) {
 		 return coleccionService.delCollection(id);
 	 }
 	 
-	 @PutMapping(path="{Id}")
+	 @PutMapping(path="actualizar/{Id}")
 	 public String updateCollection (@PathVariable("Id") Long id, @RequestBody Coleccion newColeccion) {
 		 return coleccionService.updCollection(id, newColeccion);
 	 }

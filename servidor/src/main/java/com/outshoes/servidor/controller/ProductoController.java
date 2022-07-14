@@ -35,6 +35,11 @@ public class ProductoController {
 		return productoService.getAllProducts();
 	}
 	
+	@GetMapping(path="todo/desc")
+	public List<Producto> getProductsDesc () {
+		return productoService.getProductsDesc();
+	}
+	
 	@GetMapping(path="todo/total")
 	public Long getProductCount () {
 		return productoService.getProductoCount();
