@@ -80,4 +80,8 @@ public class UsuarioService {
 			}
 		return res;
 	}
+	
+	public Optional <Usuario> findByCorreo (String correo) {
+		return usuarioRepository.findByCorreo(correo);
+	}
 }

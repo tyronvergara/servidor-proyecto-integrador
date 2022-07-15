@@ -20,13 +20,44 @@ class ServidorApplicationTests {
 	private MockMvc mockMvc;
 	
 	@Test
-	void pruebaGET() throws Exception {
+	void pruebaProductoGET() throws Exception {
 		this.mockMvc.perform( get("/api/producto/2") )
 		.andDo( print() )
 		.andExpect( status().isOk() )
 		.andExpect( content().string( containsString("Zapatillas") ));
 	}
 	
+	@Test
+	void pruebaMarcaGET() throws Exception {
+		this.mockMvc.perform( get("/api/marca/2") )
+		.andDo( print() )
+		.andExpect( status().isOk() )
+		.andExpect( content().string( containsString("Converse") ));
+	}
+	
+	@Test
+	void pruebaCategoriaGET() throws Exception {
+		this.mockMvc.perform( get("/api/categoria/2") )
+		.andDo( print() )
+		.andExpect( status().isOk() )
+		.andExpect( content().string( containsString("Mujer") ));
+	}
+	
+	@Test
+	void pruebaColeccionGET() throws Exception {
+		this.mockMvc.perform( get("/api/coleccion/2") )
+		.andDo( print() )
+		.andExpect( status().isOk() )
+		.andExpect( content().string( containsString("Tenis") ));
+	}
+	
+	@Test
+	void pruebaUsuarioGET() throws Exception {
+		this.mockMvc.perform( get("/api/usuario/2") )
+		.andDo( print() )
+		.andExpect( status().isOk() )
+		.andExpect( content().string( containsString("Tenis") ));
+	}
 	
 
 }

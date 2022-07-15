@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.outshoes.servidor.model.CambiarContrasena;
@@ -38,6 +39,11 @@ public class UsuarioController {
 	 @GetMapping(path="{Id}")
 	 public Optional<Usuario> getUser(@PathVariable("Id") Long id) {
 		 return usuarioService.getUser(id);
+	 }
+	 
+	 @GetMapping(path="buscar{correo}")
+	 public Optional<Usuario> getUser(@RequestParam("correo") String correo) {
+		 return usuarioService.findByCorreo(correo);
 	 }
 		
 	 @PostMapping(path="agregar")

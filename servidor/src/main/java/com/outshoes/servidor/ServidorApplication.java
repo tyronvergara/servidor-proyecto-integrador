@@ -22,7 +22,7 @@ public class ServidorApplication {
 	//registrationBean.addUrlPatterns("/api/usuario/*");
 	//registrationBean.addUrlPatterns("/api/producto/*");
 	
-	registrationBean.addUrlPatterns("/api/producto/agregar/");
+	//registrationBean.addUrlPatterns("/api/producto/agregar/");
 	registrationBean.addUrlPatterns("/api/producto/actualizar/*");
 	registrationBean.addUrlPatterns("/api/producto/borrar");
 	
