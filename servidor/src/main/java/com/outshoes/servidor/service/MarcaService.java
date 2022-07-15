@@ -24,14 +24,14 @@ public class MarcaService {
 		return marcaRepository.findAll();
 	}
 	
-	public String addBrand (Marca marca) { 
+	public Marca addBrand (Marca marca) { 
 		
 		Marca n = new Marca();
 		
 		n.setNombre(marca.getNombre());
 	  
 		marcaRepository.save(n); 
-		return "Marca agregada"; 
+		return n; 
 	 }
 
 	public Optional <Marca> getBrand(Long id) {

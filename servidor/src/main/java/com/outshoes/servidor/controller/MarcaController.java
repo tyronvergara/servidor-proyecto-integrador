@@ -40,7 +40,7 @@ public class MarcaController {
 	 }
 		
 	 @PostMapping(path="agregar")
-	 public String addBrand (@RequestBody Marca marca) { 
+	 public Marca addBrand (@RequestBody Marca marca) { 
 		 return marcaService.addBrand(marca); 
 	 }
 	 

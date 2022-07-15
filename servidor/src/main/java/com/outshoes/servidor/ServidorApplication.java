@@ -26,15 +26,15 @@ public class ServidorApplication {
 	registrationBean.addUrlPatterns("/api/producto/actualizar/*");
 	registrationBean.addUrlPatterns("/api/producto/borrar");
 	
-	registrationBean.addUrlPatterns("/api/categoria/agregar/");
+	//registrationBean.addUrlPatterns("/api/categoria/agregar/");
 	registrationBean.addUrlPatterns("/api/categoria/actualizar/*");
 	registrationBean.addUrlPatterns("/api/categoria/borrar");
 	
-	registrationBean.addUrlPatterns("/api/marca/agregar/");
+	//registrationBean.addUrlPatterns("/api/marca/agregar/");
 	registrationBean.addUrlPatterns("/api/marca/actualizar/*");
 	registrationBean.addUrlPatterns("/api/marca/borrar");
 	
-	registrationBean.addUrlPatterns("/api/coleccion/agregar/");
+	//registrationBean.addUrlPatterns("/api/coleccion/agregar/");
 	registrationBean.addUrlPatterns("/api/coleccion/actualizar/*");
 	registrationBean.addUrlPatterns("/api/coleccion/borrar");
 	
